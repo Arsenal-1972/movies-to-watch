@@ -1,8 +1,1 @@
-[
-    {
-        "title": "Memento",
-        "rating": 8.4,
-        "watched": false
-    }
-]
-
+[{"title": "Memento", "rating": 8.4, "watched": true}, {"title": "sw", "rating": "10", "watched": false}, {"title": "oppenheimer", "rating": "10", "watched": false}]

@@ -1,11 +1,11 @@
 import json
 
 movies = []
-
 # read movies file into variable
 with open('movies.json', 'r') as openfile:
     # Reading from json file
     movies = json.load(openfile)
+    
 
 while True:
     print("\nMovie Tracker Menu:")
@@ -22,28 +22,41 @@ while True:
         # https://www.w3schools.com/python/python_lists_add.asp
         title = input("Enter movie title: ")
         rating = input("Enter movie rating: ")
+        watched = False
+        film = {"title": title, "rating": rating, "watched": watched}
+        movies.append(film)
         pass
     elif choice == "2":
         # https://www.w3schools.com/python/python_lists_sort.asp
         # https://www.w3schools.com/python/python_dictionaries_access.asp
+        def sort_by_rating(movies):
+            return int(movies["rating"])
+        movies.sort(key = sort_by_rating, reverse = True)
+        print(movies)
         pass
     elif choice == "3":
         # https://www.w3schools.com/python/python_lists_comprehension.asp
         # https://www.w3schools.com/python/python_dictionaries_access.asp
+        for movie in movies:
+            if movie["watched"] == False: 
+                print(movie)
         pass
     elif choice == "4":
         # https://www.w3schools.com/python/python_lists_change.asp
         # https://www.w3schools.com/python/python_dictionaries_change.asp
         id = int(input("Enter the index of the movie to mark: "))
+        watched_movie = movies[id]
+        watched_movie["watched"] = True
     elif choice == "5":
         # https://www.w3schools.com/python/python_lists_remove.asp
         id = int(input("Enter the index of the movie to remove: "))
+        movies.pop(id)
+        print(movies)
     elif choice == "6":
         print("Exiting...")
         break
     else:
         print("Invalid choice. Please try again.")
-
 # writing movies to file
 with open("movies.json", "w") as movies_file:
     json.dump(movies, movies_file)
